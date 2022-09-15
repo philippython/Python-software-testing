@@ -1,3 +1,5 @@
+
+
 class Store:
     def __init__(self, name):
         self.name = name
@@ -42,5 +44,28 @@ Store.store_details(store)
 Store.store_details(store2)
 
 
-
 # Custome erorr classes
+class TooManyPagesReadError(ValueError):
+    pass
+
+class Book:
+    def __init__(self, name: str, page_count: int):
+        self.name = name
+        self.page_count = page_count
+        self.pages_read = 0
+    
+
+    def __repr__(self) -> str:
+        return "<Book %s, read %s pages out of %s" % (self.name, self.pages_read, self.page_count)
+
+    def read(self, pages: int):
+        if self.pages_read + pages > self.page_count :
+            raise TooManyPagesReadError(
+                'You tried to read {} out of {}'.format(self.pages_read + pages > self.page_count, self.page_count)
+                )
+        self.pages_read += pages
+        print("You have now read %s pages out of %s" % (self.pages_read, self.page_count))
+
+python101 = Book("Python 101", 50)
+python101.read(45)
+python101
