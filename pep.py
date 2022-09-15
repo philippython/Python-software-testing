@@ -40,3 +40,7 @@ Store.franchise(store2)
  
 Store.store_details(store)  
 Store.store_details(store2)
+
+
+
+# Custome erorr classes
