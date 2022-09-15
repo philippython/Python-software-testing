@@ -27,4 +27,13 @@ class Store:
         return "%s, total stock price: %s" % (store.name, store.stock_price)
 
 
+store = Store("Test")
+store2 = Store("Amazon")
+store2.add_item("Keyboard", 160)
+
+Store.franchise(store)  
+Store.franchise(store2)  
+ 
+Store.store_details(store)  
+Store.store_details(store2) 
     
