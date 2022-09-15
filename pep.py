@@ -61,7 +61,7 @@ class Book:
     def read(self, pages: int):
         if self.pages_read + pages > self.page_count :
             raise TooManyPagesReadError(
-                'You tried to read {} out of {}'.format(self.pages_read + pages > self.page_count, self.page_count)
+                'You tried to read {} out of {} pages'.format(self.pages_read + pages, self.page_count)
                 )
         self.pages_read += pages
         print("You have now read %s pages out of %s" % (self.pages_read, self.page_count))
@@ -69,4 +69,4 @@ class Book:
 
 python101 = Book("Python 101", 50)
 python101.read(45)
-python101
+python101.read(200)
