@@ -66,6 +66,7 @@ class Book:
         self.pages_read += pages
         print("You have now read %s pages out of %s" % (self.pages_read, self.page_count))
 
+
 python101 = Book("Python 101", 50)
 python101.read(45)
 python101
