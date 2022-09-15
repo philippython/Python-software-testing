@@ -1,4 +1,10 @@
+from typing import List
 
+def search(sequence: List, expected:  str, finder):
+    for elem in sequence:
+        if finder(elem) == expected:
+            return elem
+    raise RuntimeError(f"Could not find an element with {expected}")
 
 class Store:
     def __init__(self, name):
@@ -38,8 +44,7 @@ store2.add_item("Keyboard", 160)
 
 
 Store.franchise(store)  
-Store.franchise(store2)  
- 
+Store.franchise(store2)   
 Store.store_details(store)  
 Store.store_details(store2)
 
@@ -70,3 +75,15 @@ class Book:
 python101 = Book("Python 101", 50)
 python101.read(45)
 python101.read(200)
+
+# first class functions
+friends = [
+    {"name": "adedamola"},
+    {"name": "john"},
+    {"name": "james"}
+]
+
+def get_friend_name(friend):
+    return friend["name"]
+
+print(search(friends, "john", get_friend_name))
