@@ -93,7 +93,24 @@ print(search(friends, "john", get_friend_name))
 a = []
 b = a
 
-a.append(35)
+b.append(35)
 
 print(a)
 print(b)
+
+a = 567
+b = 567
+
+print(id(a), id(b))
+
+class Student:
+    def __init__(self, name: str, grades : List[int] = []):
+        self.names = name
+        self.grades = grades
+
+    def take_exam(self, result):
+        self.grades.append(result)
+
+bob = Student("Bob")
+bob.take_exam(90)
+print(bob.grades)
