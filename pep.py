@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 def search(sequence: List, expected:  str, finder):
     for elem in sequence:
@@ -95,23 +95,34 @@ b = a
 
 b.append(35)
 
-print(a)
-print(b)
+# print(a)
+# print(b)
 
 a = 567
 b = 567
 
-print(id(a), id(b))
+# print(id(a), id(b))
 
 # mutable default parameters
 class Student:
-    def __init__(self, name: str, grades : List[int] = []):
+    def __init__(self, name: str, grades : Optional[List[int]] = None):
         self.names = name
-        self.grades = grades
+        self.grades = grades or []
 
-    def take_exam(self, result):
+    def take_exam(self, result: int):
         self.grades.append(result)
 
 bob = Student("Bob")
 bob.take_exam(90)
 print(bob.grades)
+
+#  singleton
+class Singleton:
+
+    __instance = None
+
+    @staticmethod
+    def get_instance():
+        if Singleton.__instance == None:
+            Singleton()
+        return Singleton.__instance
