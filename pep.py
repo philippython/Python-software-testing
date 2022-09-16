@@ -116,13 +116,27 @@ bob = Student("Bob")
 bob.take_exam(90)
 print(bob.grades)
 
-#  singleton
+#  singleton : method 1
 class Singleton:
 
     __instance = None
 
-    @staticmethod
+    @staticmethod # used for creating utility static_method with self or cls as parameters
     def get_instance():
         if Singleton.__instance == None:
             Singleton()
         return Singleton.__instance
+
+    def __init__(self):
+        if Singleton.__instance != None:
+            raise Exception("Singleton already exist")
+        else:
+            Singleton.__instance = self
+
+
+s1 = Singleton.get_instance()
+s1.x = 5
+print(s1)
+s2 = Singleton.get_instance()
+print(s2.x)
+
