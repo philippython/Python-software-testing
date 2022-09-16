@@ -140,3 +140,21 @@ print(s1)
 s2 = Singleton.get_instance()
 print(s2.x)
 
+# singleton : method 2
+
+class NewSingleton:
+
+    __instance = None
+
+    def __new__(cls):
+        if (cls.__instance is None ):
+            cls.__instance = \
+                super(NewSingleton, cls).__new__(cls)
+        return cls.__instance
+
+s3 = NewSingleton()
+print(s3)
+s3.pop = 50
+s4 = NewSingleton()
+print(s4)
+print(s4.pop)
