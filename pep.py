@@ -103,6 +103,7 @@ b = 567
 
 print(id(a), id(b))
 
+# mutable default parameters
 class Student:
     def __init__(self, name: str, grades : List[int] = []):
         self.names = name
