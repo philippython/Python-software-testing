@@ -90,3 +90,10 @@ print(search(friends, "john", get_friend_name))
 
 # mutability in python
 
+a = []
+b = a
+
+a.append(35)
+
+print(a)
+print(b)
