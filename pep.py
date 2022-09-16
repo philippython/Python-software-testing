@@ -74,7 +74,7 @@ class Book:
 
 python101 = Book("Python 101", 50)
 python101.read(45)
-python101.read(200)
+python101.read(5)
 
 # first class functions
 friends = [
@@ -87,3 +87,6 @@ def get_friend_name(friend):
     return friend["name"]
 
 print(search(friends, "john", get_friend_name))
+
+# mutability in python
+
