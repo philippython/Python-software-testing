@@ -17,6 +17,6 @@ class PostTest(TestCase):
         }
         self.assertDictEqual(self.post.json(), data)
 
-
+    
 if __name__ == "__main__":
     unittest.main()

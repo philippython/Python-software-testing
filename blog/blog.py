@@ -13,5 +13,9 @@ class Blog:
         post = Post(title, content)
         self.posts.append(post.json())
 
-blog = Blog("TestBlog", "Testauthor")
-print(blog)
+    def json(self):
+        return {
+            "title" : self.title,
+            "author" : self.author,
+            "posts": self.posts,
+        }
