@@ -15,8 +15,7 @@ class PostTest(TestCase):
             "title" : "TestTitle",
             "content" : "TestContent"
         }
-
-        self.assertEqual(self.post.json(), data)
+        self.assertDictEqual(self.post.json(), data)
 
 
 if __name__ == "__main__":
