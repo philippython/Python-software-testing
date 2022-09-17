@@ -13,4 +13,4 @@ class Post:
 
 
 post = Post("TestTitle", "TestContent")
-post.json()
+print(post.__repr__())
