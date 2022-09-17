@@ -5,6 +5,7 @@ class BlogTest(unittest.TestCase):
 
     def setUp(self):
         self.blog = Blog("TestBlog", "Testauthor")
+        self.repr = "Blog {}, {}, {}".format(self.blog.title, self.blog.author, self.blog.posts)
 
     def test_blog__init__(self):
         self.assertEqual(self.blog.title, "TestBlog")
@@ -12,8 +13,7 @@ class BlogTest(unittest.TestCase):
         self.assertListEqual(self.blog.posts, [])
 
     def test_blog__repr__(self):
-
-        self.
+        self.assertEqual(self.repr, "Blog TestBlog, Testauthor, []")
 
 if __name__ == "__main__":
     unittest.main()

@@ -13,4 +13,3 @@ class Post:
 
 
 post = Post("TestTitle", "TestContent")
-print(post.__repr__())
