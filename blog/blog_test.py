@@ -15,5 +15,18 @@ class BlogTest(unittest.TestCase):
     def test_blog__repr__(self):
         self.assertEqual(self.repr, "Blog TestBlog, Testauthor, []")
 
+    def test_create_post(self):
+        posts = [
+                {
+                "title" : "TestPostTitle",
+                "content" : "TestPostContent"
+                }
+        ]
+        self.blog.create_post("TestPostTitle", "TestPostContent")
+        self.assertEqual(len(self.blog.posts), 1)
+        self.assertEqual(self.blog.posts, posts)
+
+
+
 if __name__ == "__main__":
     unittest.main()

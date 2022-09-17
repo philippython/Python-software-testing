@@ -11,5 +11,4 @@ class Post:
             "content" : self.content
         }
 
-
 post = Post("TestTitle", "TestContent")
