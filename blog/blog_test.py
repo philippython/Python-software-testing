@@ -12,14 +12,16 @@ class BlogTest(unittest.TestCase):
         self.assertListEqual(self.blog.posts, [])
 
     def test_blog__repr__(self):
-        self.assertEqual(self.blog.__repr__(), "TestBlog by Testauthor (0 blogs)")
+        self.assertEqual(self.blog.__repr__(), "TestBlog by Testauthor (0 post)")
 
     def test_create_post(self):
         self.blog.create_post("TestPostTitle", "TestPostContent")
 
-        posts = [{"title" : "TestPostTitle", "content" : "TestPostContent"}]
+        post = [{"title" : "TestPostTitle", "content" : "TestPostContent"}]
         self.assertEqual(len(self.blog.posts), 1)
-        self.assertListEqual(self.blog.posts, posts)
+        self.assertListEqual(self.blog.posts, post)
+        self.assertEqual(self.blog.__repr__(), "TestBlog by Testauthor (1 post)")
+
 
     def test_json(self):
         self.blog.create_post("TestPostTitle", "TestPostContent")
