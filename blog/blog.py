@@ -7,7 +7,7 @@ class Blog:
         self.posts = []
 
     def __repr__(self) -> str:
-        return "Blog {}, {}, {}".format(self.title, self.author, self.posts)
+        return "{} by {} ({} blogs)".format(self.title, self.author, len(self.posts))
 
     def create_post(self, title, content):
         post = Post(title, content)
