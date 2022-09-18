@@ -1,3 +1,4 @@
+from blog import Blog
 MENU_PROMPT = 'Enter "c" to create blog, "l to list blogs, "r" to read one , "p" to create post, or "q" to quit'
 blogs = {}
 
@@ -8,11 +9,11 @@ def menu():
     while selection != 'q':
         if selection == 'c':
             ask_to_create_blog()
-        if selection == 'l':
+        elif selection == 'l':
             ask_to_list_blog()
-        if selection == 'r':
+        elif selection == 'r':
             ask_to_read_blog()
-        if selection == 'p':
+        elif selection == 'p':
             ask_to_create_post()
         selection = input(MENU_PROMPT)
 
@@ -21,10 +22,19 @@ def print_blogs():
         print('- {}'.format(blog))
 
 def ask_to_create_blog():
-    pass
+    blog_info = input("Enter blog Title, content. In this format => Blog, Content")
+    blog = Blog(blog_info.split(", ")[0], blog_info.split(", ")[1])
+    blogs[blog_info.split(", ")[0]] = blog
+
 def ask_to_list_blog():
-    pass
+    for blogname , blog in blogs.items():
+        return ('- {}'.format(blog))
+
 def ask_to_read_blog():
-    pass
+   blog_content = input('Enter Blog title of blog you want to read')
+   return  blogs.get(blog_content, "Blog does not exist")
+
 def ask_to_create_post():
-    pass
+    blog_content = input('Enter Blog title of blog you want to creat a')
+    blog = blogs.get(blog_content, "Blog does not exist")
+    
