@@ -161,24 +161,31 @@ print(s4.pop)
 
 
 gradeclass = {}
-
 studentNames = ['Bett James','Namukolo Abrams','Vera Abutu','Kwame Doga','Lukeman Ahmad','Akin Torey','Luke Brant','James Kenyata', 'Ngugi Tionga', 'Okoro Eze','Agatha Chiluba','Mangu Joseph','Longe Jethro', 'Florence Giwa','Vetiva Lucent','Melody Braimoh','Victor Ihab', 'Mimi Trucker','Maguel Peter','Wellington Zuba']
 overallAvgScore = [63.00157894736842, 51.76940789473684, 57.342302631578946, 60.579407894736846, 53.46059210526316, 48.07993421052632, 51.831907894736844, 56.24243421052631, 43.8053947368421, 53.96157894736842, 70.59842105263158, 43.672302631578944, 76.48993421052631, 55.686052631578946, 49.37282894736842, 52.17282894736842, 51.422302631578944, 55.52092105263158, 42.02434210526316, 46.07006578947368]
 gradePiont = ['A','B','C','D','E','F']
 gradeStatus = ['Pass','Fail','Retake']
 
+gradeclassifier = []
 
 for score in overallAvgScore:
-    if score > 76.00: print("A")
-    if score < 76 and score >= 66 : print("B")
-    if score < 66 and score >= 56 : print("C")
-    if score < 56 and score >= 51 : print("D")
-    if score == 50 : print("E")
-    if score < 50 : print("F")
+    if score > 76.00: gradeclassifier.append("A")
+    if score < 76 and score >= 66 : gradeclassifier.append("B")
+    if score < 66 and score >= 56 : gradeclassifier.append("C")
+    if score < 56 and score >= 51 : gradeclassifier.append("D")
+    if score == 50 : gradeclassifier.append("E")
+    if score < 50 : gradeclassifier.append("F")
 
+grades = {}
+for i in range(0, len(gradeclassifier)):
+    if gradeclassifier[i] == "F":
+        grades[studentNames[i]] = [gradeclassifier[i], "Fail"]
+    elif gradeclassifier[i] == "E":
+        grades[studentNames[i]] = [gradeclassifier[i], "Retake"]
+    else:
+        grades[studentNames[i]] = [gradeclassifier[i], "Pass"]
 
-
-
+print(grades)
 
 
 
