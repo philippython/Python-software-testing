@@ -18,8 +18,11 @@ class BlogTest(unittest.TestCase):
         self.blog.create_post("TestPostTitle", "TestPostContent")
 
         post = [{"title" : "TestPostTitle", "content" : "TestPostContent"}]
+
         self.assertEqual(len(self.blog.posts), 1)
         self.assertListEqual(self.blog.posts, post)
+        self.assertEqual(self.blog.posts[0]["title"], "TestPostTitle")
+        self.assertEqual(self.blog.posts[0]["content"], "TestPostContent")
         self.assertEqual(self.blog.__repr__(), "TestBlog by Testauthor (1 post)")
 
 
