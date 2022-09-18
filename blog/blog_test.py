@@ -25,16 +25,24 @@ class BlogTest(unittest.TestCase):
         self.assertEqual(self.blog.posts[0]["content"], "TestPostContent")
         self.assertEqual(self.blog.__repr__(), "TestBlog by Testauthor (1 post)")
 
+    def test_json_no_post(self):
+        expected = {
+            "title" : self.blog.title,
+            "author" : self.blog.author,
+            "posts": []
+        }
+
+        self.assertEqual(self.blog.json(), expected)
 
     def test_json(self):
         self.blog.create_post("TestPostTitle", "TestPostContent")
 
-        data = {
+        expected = {
             "title" : self.blog.title,
             "author" : self.blog.author,
             "posts": [{"title" : "TestPostTitle", "content" : "TestPostContent"}]
         }
-        self.assertDictEqual(self.blog.json(), data)
+        self.assertDictEqual(self.blog.json(), expected)
 
 
 if __name__ == "__main__":
