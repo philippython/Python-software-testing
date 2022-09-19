@@ -10,7 +10,7 @@ def menu():
         if selection == 'c':
             ask_to_create_blog()
         elif selection == 'l':
-            ask_to_list_blog()
+            ask_to_print_blog()
         elif selection == 'r':
             ask_to_read_blog()
         elif selection == 'p':
@@ -27,7 +27,7 @@ def ask_to_create_blog():
     blog = blog(blog_title, blog_author)
     blogs[blog_title] = blog
     
-def ask_to_list_blog():
+def ask_to_print_blog():
     pass
     # for blogname , blog in blogs.items():
     #     return ('- {}'.format(blog))
