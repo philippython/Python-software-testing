@@ -4,7 +4,6 @@ import unittest
 from unittest.mock import patch
 from app import MENU_PROMPT
 
-
 class AppTest(unittest.TestCase):
     def setUp(self):
         self.blog = Blog("TestBlog", "TestAuthor")
