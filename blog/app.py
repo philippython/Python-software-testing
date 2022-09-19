@@ -22,19 +22,23 @@ def print_blogs():
         print('- {}'.format(blog))
 
 def ask_to_create_blog():
-    blog_info = input("Enter blog Title, content. In this format => Blog, Content")
-    blog = Blog(blog_info.split(", ")[0], blog_info.split(", ")[1])
-    blogs[blog_info.split(", ")[0]] = blog
-
+    blog_title = input("Enter blog Title")
+    blog_author = input("Enter blog content ")
+    blog = blog(blog_title, blog_author)
+    blogs[blog_title] = blog
+    
 def ask_to_list_blog():
-    for blogname , blog in blogs.items():
-        return ('- {}'.format(blog))
+    pass
+    # for blogname , blog in blogs.items():
+    #     return ('- {}'.format(blog))
 
 def ask_to_read_blog():
-   blog_content = input('Enter Blog title of blog you want to read')
-   return  blogs.get(blog_content, "Blog does not exist")
+    pass
+#    blog_content = input('Enter Blog title of blog you want to read')
+#    return  blogs.get(blog_content, "Blog does not exist")
 
 def ask_to_create_post():
-    blog_content = input('Enter Blog title of blog you want to creat a')
-    blog = blogs.get(blog_content, "Blog does not exist")
+    pass
+    # blog_content = input('Enter Blog title of blog you want to creat a')
+    # blog = blogs.get(blog_content, "Blog does not exist")
     
