@@ -32,6 +32,7 @@ class AppTest(unittest.TestCase):
 
             self.assertIsNotNone(app.blogs)
 
+
 if __name__ == "__main__":
     unittest.main()
 
