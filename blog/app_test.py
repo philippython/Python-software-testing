@@ -5,8 +5,6 @@ from unittest.mock import patch
 from app import MENU_PROMPT
 
 class AppTest(unittest.TestCase):
-    def setUp(self):
-        self.blog = Blog("TestBlog", "TestAuthor")
 
     def test_menu_prompt(self):
         with patch("builtins.input") as mocked_input :
@@ -15,12 +13,13 @@ class AppTest(unittest.TestCase):
 
     def test_menu_calls_print_blogs(self):
         with patch('app.print_blogs') as mocked_print_blogs:
-            with patch('builtins.input'):
+            with patch('builtins.input', return_value='q'):
                 app.menu()
-                mocked_print_blogs.called()
+                mocked_print_blogs.assert_called()
 
     def test_print_blogs(self):
-        app.blogs = {"Test" : self.blog}
+        blog = Blog("TestBlog", "TestAuthor")
+        app.blogs = {"Test" : blog}
         with patch('builtins.print') as mocked_print:
             app.print_blogs()
             mocked_print.assert_called_with('- TestBlog by TestAuthor (0 post)')
@@ -30,7 +29,7 @@ class AppTest(unittest.TestCase):
             mocked_input_blogs.side_effect = ('TestBlog', 'TestAuthor')
             app.ask_to_create_blog()
 
-            self.assertIsNotNone(app.blogs)
+            self.assertIsNotNone(app.blogs.get('TestBlog'))
 
 
 if __name__ == "__main__":
