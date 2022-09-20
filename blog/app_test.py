@@ -30,7 +30,7 @@ class AppTest(unittest.TestCase):
             app.ask_to_create_blog()
 
             self.assertIsNotNone(app.blogs.get('TestBlog'))
-
+    
 
 if __name__ == "__main__":
     unittest.main()
