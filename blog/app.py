@@ -29,7 +29,8 @@ def print_blogs():
 def ask_to_create_blog():
     blog_title = input("Enter blog Title")
     blog_author = input("Enter blog content ")
-    blogs[blog_title] = Blog(blog_title, blog_author)
+    blog = Blog(blog_title, blog_author)
+    blogs[blog_title] = blog.json()
      
     
 def ask_to_read_blog():

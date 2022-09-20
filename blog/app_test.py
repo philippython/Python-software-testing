@@ -33,12 +33,7 @@ class AppTest(unittest.TestCase):
 
             self.assertIsNotNone(app.blogs)
 
-    def test_ask_to_read_blogs(self):
-        with patch('builtins.input', return_value='Test'):
-            with patch('app.print_posts')  as mocked_input :
-                app.ask_to_read_blog()
-
-                mocked_input.assert_called_with(self.blog)
+    
 
 if __name__ == "__main__":
     unittest.main()
