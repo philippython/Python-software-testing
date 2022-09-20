@@ -15,7 +15,7 @@ class AppTest(unittest.TestCase):
 
     def test_menu_calls_print_blogs(self):
         with patch('app.print_blogs') as mocked_print_blogs:
-            with patch('builtin.input'):
+            with patch('builtins.input'):
                 app.menu()
                 mocked_print_blogs.called()
 

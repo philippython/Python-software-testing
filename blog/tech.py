@@ -127,6 +127,7 @@ while True:
         for i in range(0, len(df.index)):
             dbar, n, number_of_layer = effective_depth()
             dprime = topbar_depth()
+            
             fs, fsprime, es, a, c = stress_strain()
             phi, classify = strength_factor_classification()
             Mu, T, C, Cprime = forces_capacity()

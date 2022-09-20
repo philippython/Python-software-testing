@@ -6,16 +6,16 @@ def menu():
 
     print_blogs()
     selection = input(MENU_PROMPT)
-    while selection != 'q':
-        if selection == 'c':
+    # while selection != 'q':
+    if selection == 'c':
             ask_to_create_blog()
-        elif selection == 'l':
+    elif selection == 'l':
             ask_to_print_blog()
-        elif selection == 'r':
+    elif selection == 'r':
             ask_to_read_blog()
-        elif selection == 'p':
+    elif selection == 'p':
             ask_to_create_post()
-        selection = input(MENU_PROMPT)
+    selection = input(MENU_PROMPT)
 
 def print_blogs():
     for blogname , blog in blogs.items():
