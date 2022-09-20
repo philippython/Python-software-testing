@@ -4,10 +4,12 @@ import unittest
 from unittest.mock import patch
 from app import MENU_PROMPT
 
+
 class AppTest(unittest.TestCase):
-    def setUp(self) -> None:
+    def setUp(self):
         self.blog = Blog("TestBlog", "TestAuthor")
-        
+        app.blogs = {"Test" : self.blog}
+
     def test_menu_prompt(self):
         with patch("builtins.input", return_value='q') as mocked_input :
             app.menu()
@@ -20,7 +22,6 @@ class AppTest(unittest.TestCase):
                 mocked_print_blogs.assert_called()
 
     def test_print_blogs(self):
-        app.blogs = {"Test" : self.blog}
         with patch('builtins.print') as mocked_print:
             app.print_blogs()
             mocked_print.assert_called_with('- TestBlog by TestAuthor (0 post)')
@@ -30,8 +31,14 @@ class AppTest(unittest.TestCase):
             mocked_input_blogs.side_effect = ('TestBlog', 'TestAuthor')
             app.ask_to_create_blog()
 
-            self.assertIsNotNone(app.blogs.get('TestBlog'))
-    
+            self.assertIsNotNone(app.blogs)
+
+    def test_ask_to_read_blogs(self):
+        with patch('builtins.input', return_value='Test'):
+            with patch('app.print_posts')  as mocked_input :
+                app.ask_to_read_blog()
+
+                mocked_input.assert_called_with(self.blog)
 
 if __name__ == "__main__":
     unittest.main()

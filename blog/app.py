@@ -48,4 +48,5 @@ def ask_to_create_post():
     # blog_content = input('Enter Blog title of blog you want to creat a')
     # blog = blogs.get(blog_content, "Blog does not exist")
     
-
+if __name__ == "__main__":
+    menu()
