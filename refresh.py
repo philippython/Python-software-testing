@@ -1,6 +1,6 @@
 #  destructing variables
 from unicodedata import name
-from abc import ABC , classmethod
+from abc import ABC , abstractmethod
 
 t = [3, 5,6, 7, 2, 6]
 
