@@ -1,4 +1,5 @@
 from unittest import TestCase
+import unittest
 from post import Post
 
 class PostTest(TestCase):
@@ -9,3 +10,5 @@ class PostTest(TestCase):
         self.assertEqual(post.title, "Tech Biggest Boy")
         self.assertEqual(post.content, "Nigerian-born 18 yr old software engineer becomes CEO of Cashapp")
 
+if __name__ == "__main__":
+    unittest.main()
