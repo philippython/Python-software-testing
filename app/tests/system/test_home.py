@@ -1,5 +1,6 @@
 import unittest
 from app import app
+import json
 
 class TestHome(unittest.TestCase):
 
@@ -7,7 +8,9 @@ class TestHome(unittest.TestCase):
         with app.test_client() as client:
             response = client.get('/')
             expected = {"message" : "HelloWorld"}
-            self.assertDictEqual(dict(response) , expected)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(json.loads(response.get_data()), expected)
 
 
 if __name__ == "__main__":
