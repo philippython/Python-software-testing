@@ -7,7 +7,7 @@ class TestHome(unittest.TestCase):
         with app.test_client() as client:
             response = client.get('/')
             expected = {"message" : "HelloWorld"}
-            self.assertDictEqual(response , expected)
+            self.assertDictEqual(dict(response) , expected)
 
 
 if __name__ == "__main__":
