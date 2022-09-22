@@ -6,21 +6,17 @@ from models.item import ItemModel
 class TestItem(TestCase):
 
     def setUp(self):
-        pass
+        self.item = ItemModel("Test", 45.00)
 
-    def test_item_init(self):
-        pass
+    def test_create_item(self):
+        
+        self.assertEqual(self.item.name, "Test")
+        self.assertEqual(self.item.price, 45.00)
 
     def test_item_json(self):
-        pass
+        expected = {'name': 'Test', 'price': 45.00}
 
-    def test_find_name(self):
-        pass
-    
-    def test_save_to_db(self):
-        pass
+        self.assertDictEqual(self.item.json(), expected)
 
-    def test_delete_item(self):
-        pass
 if __name__ == "__main__":
     unittest.main()
