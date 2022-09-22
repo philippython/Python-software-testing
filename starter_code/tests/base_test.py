@@ -12,6 +12,7 @@ from unittest import TestCase
 from app import app
 from models.item import ItemModel
 import unittest
+from flask import jsonify
 
 class BaseTest(TestCase):
     def setUp(self):
@@ -23,6 +24,7 @@ class BaseTest(TestCase):
             db.init_app(app)
             db.create_all()
         # Get test client
+        self.model = ItemModel
         self.client = app.test_client()
         self.app_context = app.app_context
 
