@@ -8,18 +8,19 @@ class TestItem(TestCase):
     def setUp(self):
         pass
 
-    def test_get_item(self):
+    def test_item_init(self):
         pass
 
-    def test_put_item(self):
+    def test_item_json(self):
         pass
 
-    def test_post_item(self):
+    def test_find_name(self):
         pass
     
-    def test_delete_item(self):
+    def test_save_to_db(self):
         pass
 
-
+    def test_delete_item(self):
+        pass
 if __name__ == "__main__":
     unittest.main()
