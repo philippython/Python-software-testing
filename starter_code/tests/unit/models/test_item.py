@@ -1,4 +1,5 @@
 from unittest import TestCase
+import unittest
 
 from models.item import ItemModel
 
@@ -18,3 +19,7 @@ class TestItem(TestCase):
     
     def test_delete_item(self):
         pass
+
+
+if __name__ == "__main__":
+    unittest.main()
