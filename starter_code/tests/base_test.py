@@ -19,11 +19,18 @@ class BaseTest(TestCase):
         make sure databse exists and get test_client
         """
         app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///data.db'
-        self.client = app.test_client() 
-        
+        with app.app_context():
+            db.init_app(app)
+            db.create_all()
+        # Get test client
+        self.client = app.test_client()
+        self.app_context = app.app_context
+
     def tearDown(self):
         """make sure databse is erased"""
-
+        with app.app_context():
+            db.session.remove()
+            db.drop_all()
 
 if __name__ == "__main__":
     unittest.main()
