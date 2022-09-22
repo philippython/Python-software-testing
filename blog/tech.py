@@ -7,25 +7,25 @@ def beta1_value():
 
 def steel_areas():
     import math
-    As = (math.pi * dbar ** 2)/4 * n
-    Asprime = (math.pi) * (dbarprime **2/4) * nprime
+    As = (math.pi) *(dbar ** 2)/4 * n
+    Asprime = (math.pi) * (dbarprime **2)/4 * nprime
     return As, Asprime
 
 def effective_depth():
     number_of_layer = next(layer for layer in range(1, 6) if (b - 2 * cc -2 * ties - (n/layer) * dbar)/((n/layer) - 1) > dbar)
     multi_layer = number_of_layer - 0.5
     deff = h - cc - ties - dbar * multi_layer
-    return deff
+    return deff, number_of_layer
 
 def topbar_depth():
     number_of_layer = next(layer for layer in range(1, 6) if (b - 2 * cc -2 * ties - (nprime/layer) * dbarprime)/((nprime/layer) - 1) > dbarprime)
     multi_layer = number_of_layer - 0.5
-    deff = h - cc - ties - dbar * multi_layer
-    return deff
+    dprime = cc + ties + dbarprime * multi_layer
+    return dprime
 
 def stress_strain():
     # T = C + Cprime
-    # As *fy = 0.85 * fc * a * b + Asprime * fsprime
+    # As * fy = 0.85 * fc * a * b + Asprime * fsprime
     # As * fy = 0.85 * fc * beta1 * c * b + Asprime * ec * Es * ((c - dprime)/c)
     # 0.85 * fc * b * beta1 * c**2 + (Asprime * ec * Es - As * fy) * c - Asprime * ec * Es * dprime = 0
     # Quadratic equation: Ax **2 + Bx + c = 0
@@ -37,9 +37,10 @@ def stress_strain():
     B = Asprime * ec * Es - As * fy
     C = - Asprime * ec * Es * dprime
     D = (B**2) - (4 * A * C)
-    c = (- B + math.sqrt(D)/2 * A)
+    
+    c = (- B + math.sqrt(D))/(2 * A)
     a = beta1 * c
-    es = ec * (deff - c)/c
+    es = ec * ((deff - c)/c)
     fs = es * Es
     esprime = ec * ((c - dprime)/c)
     fsprime = esprime * Es
@@ -70,6 +71,8 @@ def steel_ratio_check():
     rho_min2 = (fc ** (1/2))/(4 * fy)
     if rho <= rho_max and rho >= min(rho_min1, rho_min2):
         return 'steel ratio is with limits: ''\u03C1 = {:.4f}'.format(rho)
+    elif rho < min (rho_min1, rho_min2):
+        return 'steel ratio is less than the minimum limit: \u0A31 '+' min = {:.4f}'.format(rho)
     else: 
         return 'steel ratio exceeds the maximum limit, overly reinforced: ', '\u03A1'+'max = {:.4f}'.format(rho)
                            
@@ -97,9 +100,9 @@ def rebar_suggestion():
         else:
             nprime = 2
         nprime_list.append(nprime)
-    dict = {'Bottom Bars': dbar_sizes, 'Qty(bottom)': n_list, 'layer': number_of_layer_list, 'Top Bars': dbarprime_sizes, 'Qty (Top)': nprime_list}
+    dicts = {'Bottom Bars': dbar_sizes, 'Qty(bottom)': n_list, 'layer': number_of_layer_list, 'Top Bars': dbarprime_sizes, 'Qty (Top)': nprime_list}
     import pandas as pd
-    df = pd.DataFrame(dict)
+    df = pd.DataFrame(dicts)
     return df
 print('\n...........................................................................')
 print('Beam design check-rectangular beam')
@@ -127,7 +130,6 @@ while True:
         for i in range(0, len(df.index)):
             dbar, n, number_of_layer = effective_depth()
             dprime = topbar_depth()
-            
             fs, fsprime, es, a, c = stress_strain()
             phi, classify = strength_factor_classification()
             Mu, T, C, Cprime = forces_capacity()
@@ -171,5 +173,3 @@ while True:
 
                                                                                                                                                                
     
-                           
-                           
