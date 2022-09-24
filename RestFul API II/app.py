@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt import JWT, JWTError
 from security import authenticate, identity
@@ -26,8 +26,10 @@ api.add_resource(UserRegister, '/register')
 
 
 @app.errorhandler(JWTError)
-def auht_error_handler(err):
-    return jsonify({'message':})
+def auth_error_handler(err):
+    return jsonify({'message':"unauthenticated "}), 401
+
+
 if __name__ == '__main__':
     from db import db
 
