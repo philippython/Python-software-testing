@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 from flask_restful import Api
-
+from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 
