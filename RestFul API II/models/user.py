@@ -7,7 +7,7 @@ class UserModel(db.Model):
     id = db.Column(db.integer, primary_key=True)
     username = db.Column(db.String(50))
     password = db.Column(db.String())
-    stores = db.relationship('StoreModel')
+    # stores = db.relationship('StoreModel')
 
     def __init__(self, username, password):
         self.username = username
