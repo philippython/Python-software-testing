@@ -1,3 +1,18 @@
+"""
+This assessment is to test you knowlegde of python dictionaries and functions and a lot more
+
+- I used some advanced string formating in the code below check them out on google to understand how the wrok and try to use them in you code
+- This code is a demo bank application
+- I have constructed a dictionary below which also has bugs in them
+- The dictionary stores users and bank official information like password and account balance
+- You need to understand how the dictionary is structured before attempting to debug this code
+- The code below checks if the person is logging in with the right information
+- And shows the user balance
+- A bank official can also login
+
+Happy debugging !!!
+
+"""
 print("""
                         ░░░░                      
                     ░░░░  ░░░░                    
@@ -58,24 +73,24 @@ def login():
         id = int(input("Enter your official id: "))
         password = input("Enter your official password: ")
 
-        if password ==  bank_model["officials"][id]["password"] :
+        if password ==  bank_model["officials"][id]["pasord"] 
             msg = "Welcome back %s " % (bank_model["officials"][id]["name"])
             print(msg)
 
-        elif password !=  bank_model["officials"][id]["password"]:
+        elif password !=  bank_model["offiials"][id]["password"]:
 
             print("password or id is invalid!!")
             login()
     else:
         id = input("Enter your account number: ")
         password = input("Enter your account password: ")
-
+    
         if password ==  bank_model["customers"][id]["password"] :
-            msg = "Welcome back %s\n Your current balance: $%s" % (bank_model["customers"][id]["account_name"], bank_model['customers'][id]["balance"])
+            msg = "Welcome back %s\n Your current balance: $%s" % (bank_model["customers"][id]["account_name"], bank_mdel['customers'][id]["balane"])
             print(msg)
 
-        elif password !=  bank_model["customers"][id]["password"]:
+          elif password !=  bank_model["customers"][id]["password"]
             print("password or id is invalid!!")
             login()
 
-login()
+ogin()
