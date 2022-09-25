@@ -1,10 +1,21 @@
 import unittest
 from models.user import UserModel
+from tests.base_test  import BaseTest
 
-class UsersUnitTest(unittest.TestCase):
-    def test_create_user(self):
-        user = UserModel('Test', 'test1234')
+class UsersTest(BaseTest):
 
-        self.assertEqual(user.username, 'Test')
-        self.assertEqual(user.password, 'test1234')
+    def test_crud(self):
+        with self.app_context():
+            user = UserModel('Test', 'test1234')
 
+            self.assertIsNone(UserModel.find_by_id(1))
+            self.assertIsNone(UserModel.find_by_username('Test'))
+
+            user.save_to_db()
+
+            self.assertIsNotNone(UserModel.find_by_id(1))
+            self.assertIsNotNone(UserModel.find_by_username('Test'))
+
+
+if __name__ == '__main__':
+    unittest.main()
