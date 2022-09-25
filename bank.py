@@ -1,16 +1,17 @@
 """
-This assessment is to test you knowlegde of python dictionaries and functions and a lot more
+This assessment is to test your knowlegde of python dictionaries and functions and a lot more
 
-- I used some advanced string formating in the code below check them out on google to understand how the wrok and try to use them in you code
+- I used some advanced string formating in the code below, check them out on google to understand how the work and try to use them in your code some other time
 - This code is a demo bank application
-- I have constructed a dictionary below which also has bugs in them
-- The dictionary stores users and bank official information like password and account balance
+- The dictionary stores users and bank officials information like password and users account balance
 - You need to understand how the dictionary is structured before attempting to debug this code
-- The code below checks if the person is logging in with the right information
+- The code below checks if the a user is logging in with the right information/details
 - And shows the user balance
 - A bank official can also login
-
-Happy debugging !!!
+ 
+ +++ Hint 
+ Run the code first before attempting to debug 
+Happy coding and debugging !!!
 
 """
 print("""
