@@ -12,7 +12,7 @@ from db import db
 
 
 class BaseTest(TestCase):
-    
+
     @classmethod
     def setUpClass(cls):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
@@ -24,7 +24,7 @@ class BaseTest(TestCase):
         with app.app_context():
             db.create_all()
         # Get a test client
-        self.app = app.test_client
+        self.test_client = app.test_client
         self.app_context = app.app_context
 
     def tearDown(self):
