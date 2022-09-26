@@ -1,4 +1,5 @@
 import unittest
+from wsgiref import headers
 from models.user import UserModel
 from models.item import ItemModel
 from models.store import StoreModel
@@ -71,38 +72,39 @@ class ItemTest(BaseTest):
 
                 self.assertEqual(r.status_code, 400)
 
-    # def test_put_item(self):
-    #     with self.test_client() as c:
-    #         with self.app_context():
-    #             StoreModel('test').save_to_db()
-    #             r = c.put('/item/test', data={'price': 17.99, 'store_id': 1})
+    def test_put_item(self):
+        with self.test_client() as c:
+            with self.app_context():
+                StoreModel('test').save_to_db()
+                r = c.put('/item/test', data=json.dumps({'price': 17.99, 'store_id': 1}), headers=self.headers)
 
-    #             self.assertEqual(r.status_code, 400)
-    #             self.assertEqual(ItemModel.find_by_name('test').price, 17.99)
-    #             self.assertDictEqual(d1={'name': 'test', 'price': 17.99},
-    #                                  d2=json.loads(r.data))
+                self.assertEqual(r.status_code, 200)
+                self.assertEqual(ItemModel.find_by_name('test').price, 17.99)
+                self.assertDictEqual(d1={'name': 'test', 'price': 17.99},
+                                     d2=json.loads(r.data))
 
-    # def test_put_update_item(self):
-    #     with self.test_client() as c:
-    #         with self.app_context():
-    #             StoreModel('test').save_to_db()
-    #             c.put('/item/test', data={'price': 17.99, 'store_id': 1})
-    #             r = c.put('/item/test', data={'price': 18.99, 'store_id': 1})
+    def test_put_update_item(self):
+        with self.test_client() as c:
+            with self.app_context():
+                StoreModel('test').save_to_db()
+                c.put('/item/test', data=json.dumps({'price': 17.99, 'store_id': 1}))
+                r = c.put('/item/test', data=json.dumps({'price': 18.99, 'store_id': 1}), headers=self.headers)
 
-    #             self.assertEqual(r.status_code, 200)
-    #             self.assertEqual(ItemModel.find_by_name('test').price, 18.99)
+                self.assertEqual(r.status_code, 200)
+                self.assertEqual(ItemModel.find_by_name('test').price, 18.99)
 
-    # def test_item_list(self):
-    #     with self.test_client() as c:
-    #         with self.app_context():
-    #             StoreModel('test').save_to_db()
-    #             ItemModel('test', 17.99, 1).save_to_db()
-    #             r = c.get('/items')
+    def test_item_list(self):
+        with self.test_client() as c:
+            with self.app_context():
+                StoreModel('test').save_to_db()
+                ItemModel('test', 17.99, 1).save_to_db()
+                r = c.get('/items')
 
-    #             self.assertDictEqual(d1={'items': [{'name': 'test', 'price': 17.99}]},
-    #                                  d2=json.loads(r.data))
+                self.assertDictEqual(d1={'items': [{'name': 'test', 'price': 17.99}]},
+                                     d2=json.loads(r.data))
 
 
 
 if __name__ == "__main__":
     unittest.main()
+    
