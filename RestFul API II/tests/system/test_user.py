@@ -14,16 +14,15 @@ class UserTest(BaseTest):
                 self.assertIsNotNone(UserModel.find_by_username('Test'))
                 self.assertDictEqual(json.loads(response.data), {"message": "User created successfully."})
 
-    # def test_register_and_login(self):
-    #     data = {'username' : 'Test','password' : 'Test1234'}
-    #     headers = { "content-Type": "application/json"}
-    #     with self.test_client() as client:
-    #         with self.app_context() :
-    #             client.post('/register', data=json.dumps(data), headers=headers)
-    #             auth_request = client.post('/auth', data=json.dumps(data), headers=headers)
+    def test_register_and_login(self):
+        data = {'username' : 'Test','password' : 'Test1234'}
+        headers = { "content-Type": "application/json"}
+        with self.test_client() as client:
+            with self.app_context() :
+                client.post('/register', data=json.dumps(data), headers=headers)
+                auth_request = client.post('/auth', data=json.dumps(data), headers=headers)
 
-    #             self.assertDictEqual({ 'access_token' : 'rgghghsghhefrg' }, json.loads(auth_request.data))
-    #             self.assertIn('access_token', json.loads(auth_request.data).keys())
+                self.assertIn('access_token', json.loads(auth_request.data).keys())
     
     def test_register_duplicate_user(self):
         data = {'username' : 'Test','password' : 'Test1234'}
