@@ -53,3 +53,17 @@ print(wunmi.withdraw(16790.87))
 
 print(wunmi.withdraw(59403.87))
 
+#  using the transfer method
+
+# The transfer method takes another account object as a parameter
+# Creating a new account object 
+
+john = Account('john', 4446748863)
+
+#  using the transfer method
+
+wunmi.transfer(john, 20000.00)
+
+# checking wunmi's balance after making transfer
+
+print(wunmi.get_balance())
