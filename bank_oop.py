@@ -29,6 +29,18 @@ class Account:
         return 'Insufficient Funds\nYour Available Balance is #%s' % (self.balance)
 
 
-#   
+# creating account object
 
-    
+wunmi = Account('wunmi', 2395495344)
+
+# using the show_menu method
+
+print(wunmi.show_menu())
+
+# using the get balance method 
+
+print(wunmi.get_balance())
+
+# using the deposit method
+
+print()
