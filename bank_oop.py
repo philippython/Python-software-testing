@@ -43,4 +43,13 @@ print(wunmi.get_balance())
 
 # using the deposit method
 
-print()
+print(wunmi.deposit(56000.87))
+
+#  using the withdrawal method
+
+print(wunmi.withdraw(16790.87))
+
+#  Attempting overdraft 
+
+print(wunmi.withdraw(59403.87))
+
