@@ -62,8 +62,12 @@ john = Account('john', 4446748863)
 
 #  using the transfer method
 
-wunmi.transfer(john, 20000.00)
+print(wunmi.transfer(john, 20000.00))
 
 # checking wunmi's balance after making transfer
 
 print(wunmi.get_balance())
+
+#  checking john's balance after receiving transfer 
+
+print(john.get_balance())
