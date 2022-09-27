@@ -44,6 +44,6 @@ class StoreTest(BaseTest):
                 self.assertEqual(json.loads(request.data), {'message': 'Store not found'})
 
 
-
-if __name__ == "__main__":
-    unittest.main()
+#
+# if __name__ == "__main__":
+#     unittest.main()

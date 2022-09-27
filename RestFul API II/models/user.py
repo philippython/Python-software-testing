@@ -28,3 +28,4 @@ class UserModel(db.Model):
     @classmethod
     def find_by_id(cls, userid):
         return cls.query.get(userid)
+
