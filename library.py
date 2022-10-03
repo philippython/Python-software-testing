@@ -27,8 +27,14 @@ class Library:
                 book_same_rating.update(book)
         print('No book has the rating of %s' % (book_ratings)) if book_same_rating == {} else print(book_same_rating)
 
-    def change_book_rating(self):
-
+    def change_book_rating(self, book_name, new_rating):
+        if book_name not in self.shelf.keys():
+            return f"Book {book_name} does not exist in the library"
+        else:
+            book = self.shelf.get(book_name)
+            book[book_name] = new_rating
+            return f"Book rating updated to {new_rating}"
+            
     def delete_book(self, book_name):
         if book_name in self.shelf.keys():
             self.shelf.pop(book_name)
