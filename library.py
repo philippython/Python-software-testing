@@ -58,11 +58,53 @@ class Library:
 # book_library.change_book_rating('Rise', 4.5)
 # book_library.change_book_rating('rise', 4.5)
 # print(book_library.get_all_books())
+def terminator():
+    quit =input('Would you like to perform more operations (Y/N)').lower()
+    if quit == 'y': 
+        main()
+    else: 
+        return
+
 def main():
 
     library = Library()
-    choice = input('What operation would you like to perform \n 1. Add a new book \n 2. Get all books in library 3. Get all books with \ same ratings \n 4. Delete a book \n 5. Update book rating 6. Get a single book')
+    library.add_book('Journey of philip', 8.9)
+    library.add_book('Rise', 9.9)
+    library.add_book('Cinderalla', 9.9)
+    library.add_book('25-21', 8.9)
+    library.add_book('Alchemy of souls', 8.0)
+    library.add_book('Toy store', 6.0)
+
+    choice = input('What operation would you like to perform \n 1. Add a new book \n 2. Get all books in library \n 3. Get all books with same ratings \n 4. Delete a book \n 5. Update book rating 6. Get a single book')
 
     if choice == '1' :
-        book_name = 
-        library.add_book()
+        book_name = input('What is the name of the book you want to add')
+        book_rating = input('What is the rating of the book')
+        library.add_book(book_name, book_rating)
+
+        terminator()
+        
+
+    elif choice == '2' :
+        library.get_all_books()
+
+        terminator()
+
+
+    elif choice == '3' :
+        book_rating = input('What is the rating of the books you need')
+        library.get_books_by_ratings(book_rating)
+
+        terminator()
+
+    elif choice == '4' :
+        book_name = input('What is the name of the book you want to delete')
+        library.delete_book(book_name)
+
+        terminator()
+
+    elif choice == '5' :
+        book_name = input("What is the name of the book you want to change its ratings")
+        new_rating = input('What is the new rating of the book')
+        library.change_book_rating(book_name, new_rating)
+    
