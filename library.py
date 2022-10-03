@@ -34,7 +34,7 @@ class Library:
             book = self.shelf.get(book_name)
             book[book_name] = new_rating
             return f"Book rating updated to {new_rating}"
-            
+
     def delete_book(self, book_name):
         if book_name in self.shelf.keys():
             self.shelf.pop(book_name)
@@ -46,13 +46,16 @@ class Library:
     def get_all_books(self):
         return self.shelf
 
-book_library = Library()
-book_library.add_book('Journey of philip', 8.9)
-book_library.add_book('Rise', 9.9)
-book_library.add_book('Cinderalla', 9.9)
-book_library.add_book('25-21', 8.9)
-book_library.add_book('Alchemy of souls', 8.0)
-print(book_library.get_all_books())
-print(book_library.get_book_by_name('Rise'))
-book_library.get_books_by_ratings(9.0)
+# book_library = Library()
+# book_library.add_book('Journey of philip', 8.9)
+# book_library.add_book('Rise', 9.9)
+# book_library.add_book('Cinderalla', 9.9)
+# book_library.add_book('25-21', 8.9)
+# book_library.add_book('Alchemy of souls', 8.0)
+# print(book_library.get_all_books())
+# print(book_library.get_book_by_name('Rise'))
+# book_library.get_books_by_ratings(9.0)
+# book_library.change_book_rating('Rise', 4.5)
+# book_library.change_book_rating('rise', 4.5)
+# print(book_library.get_all_books())
 
