@@ -61,4 +61,8 @@ class Library:
 def main():
 
     library = Library()
-    choice = input('What operation would you like to perform \n 1. Add a new book \n 2. Get all books in library 3. Get all books with same rating \n ')
+    choice = input('What operation would you like to perform \n 1. Add a new book \n 2. Get all books in library 3. Get all books with \ same ratings \n 4. Delete a book \n 5. Update book rating 6. Get a single book')
+
+    if choice == '1' :
+        book_name = 
+        library.add_book()
