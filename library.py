@@ -58,4 +58,7 @@ class Library:
 # book_library.change_book_rating('Rise', 4.5)
 # book_library.change_book_rating('rise', 4.5)
 # print(book_library.get_all_books())
+def main():
 
+    library = Library()
+    choice = input('What operation would you like to perform \n 1. Add a new book \n 2. Get all books in library 3. Get all books with same rating \n ')
