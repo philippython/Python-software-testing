@@ -8,3 +8,4 @@ use_step_matcher('re')
 def step_impl(context, link_id):
     link = context.browser.find_element(by=By.ID , value=link_id)
     link.click()
+
