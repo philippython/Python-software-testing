@@ -10,6 +10,11 @@ use_step_matcher('re')
 
 @then('There is a title shown on the page')
 def step_impl(context):
-    assert context.browser.find_element(by=By.TAG_NAME, value='title').is_displayed()
+    title = context.browser.find_element(by=By.TAG_NAME, value='h1')
+    assert title.is_displayed()
+
 
 @step('The title tag has content "(.*)"')
+def step_impl(context, content):
+    title =  context.browser.find_element(by=By.TAG_NAME, value='h1')
+    assert title.text == content
