@@ -12,26 +12,25 @@ use_step_matcher('re')
 def step_impl(context):
     context.driver = webdriver.Chrome(DRIVER_PATH)
     page = HomePage(context.driver)
-    page.driver.get(page.url())  
-    # page = BlogPage(webdriver.Chrome(DRIVER_PATH))
-    # page.driver.get(page.url())  
+    page.driver.get(page.url)  
+     
 
 #  testing second scenario
 @given('I am on the blog page')
 def step_impl(context):
     context.driver = webdriver.Chrome(DRIVER_PATH)
     page = BlogPage(context.driver)
-    page.driver.get(page.url())
+    page.driver.get(page.url)
 
 
 @then('I am on the blog page')
 def step_impl(context):
     page = BlogPage(context.driver)
-    expected_url = page.driver.get(page.url())
+    expected_url = page.driver.get(page.url)
     assert context.driver.current_url == expected_url
 
 @then('I am on the Homepage')
 def step_impl(context):
     page = HomePage(context.driver)
-    expected_url = page.driver.get(page.url())
+    expected_url = page.driver.get(page.url)
     assert context.driver.current_url == expected_url

@@ -1,5 +1,4 @@
 from locators.base_page import BasePageLocators
-from locators.home_page import HomePageLocators
 
 class BasePage:
 
@@ -14,4 +13,6 @@ class BasePage:
     def title(self):
         return self.driver.find_element(*BasePageLocators.TITLE)
 
-    
+    @property
+    def navigation(self):
+        return self.driver.find_elements(*BasePageLocators.NAV_LINKS)

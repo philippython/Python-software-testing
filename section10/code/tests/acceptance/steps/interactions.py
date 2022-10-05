@@ -1,11 +1,17 @@
 from behave import *
-from selenium.webdriver.common.by import By
+from page_model.base_page import BasePage
 
 
 use_step_matcher('re')
 
-@when('I click on the link with id "(.*)"')
-def step_impl(context, link_id):
-    link = context.driver.find_element(by=By.ID , value=link_id)
-    link.click()
+@when('I click on the "(.*)" link')
+def step_impl(context, link_text):
+    page = BasePage(context.driver)
+    page_links = page.navigation
+    link = [l for l in page_links if l.text == link_text]
+
+    if len(link) > 0 :
+        link[0].click()
+    else:
+        raise RuntimeError()
 
