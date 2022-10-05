@@ -26,11 +26,10 @@ def step_impl(context):
 @then('I am on the blog page')
 def step_impl(context):
     page = BlogPage(context.driver)
-    expected_url = page.driver.get(page.url)
-    assert context.driver.current_url == expected_url
+    assert context.driver.current_url == page.url
 
 @then('I am on the Homepage')
 def step_impl(context):
     page = HomePage(context.driver)
-    expected_url = page.driver.get(page.url)
-    assert context.driver.current_url == expected_url
+    
+    assert context.driver.current_url == page.url
