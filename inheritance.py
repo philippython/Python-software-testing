@@ -34,7 +34,6 @@ class Developer:
         self.networth = worth
 
 
-
     @classmethod
     def senority_level(cls, name, exp):
         return cls(name, exp, "senior" if exp > 3 else 'junior')
@@ -49,3 +48,4 @@ class Developer:
 john = Developer.senority_level('john', 8)
 print(john.worth)
 
+print(dir(Developer))
