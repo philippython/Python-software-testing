@@ -17,13 +17,16 @@ class Child(Parent):
 
 class Developer:
 
-    def __init__(self, exp):
-        self.senority = self.senority_level(exp)
+    def __init__(self, name, exp, level):
+        self.level = level
         self.exp = exp
+        self.name = name
 
     @classmethod
-    def senority_level(cls, exp):
-        return "senior" if exp > 3 else 'junior' 
+    def senority_level(cls, name, exp):
+        return cls(name, exp, "senior" if exp > 3 else 'junior')
 
-philip = Developer(7)
-print(philip.senority)
+    
+
+philip = Developer.senority_level('john', 8)
+print(philip.level)
