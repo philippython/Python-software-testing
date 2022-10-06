@@ -4,7 +4,7 @@ Feature: Test that pages have correct content
     Then There is a title shown on the page
     And The title tag has content "This is the blog page"
 
-    Scenario: Blog page has a correct title
-    Given I am on the blog page
+    Scenario: Home page has a correct title
+    Given I am on the Homepage
     Then There is a title shown on the page
-    And The title tag has content "This is the home page"
+    And The title tag has content "This is the homepage"
