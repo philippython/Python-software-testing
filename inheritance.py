@@ -18,12 +18,12 @@ class Child(Parent):
 class Developer:
 
     def __init__(self, exp):
-        self.senority = self.senority_level()
+        self.senority = self.senority_level(exp)
         self.exp = exp
 
     @classmethod
-    def senortiy_level(cls, exp):
+    def senority_level(cls, exp):
         return "senior" if exp > 3 else 'junior' 
 
 philip = Developer(7)
-print(philip.exp)
+print(philip.senority)
